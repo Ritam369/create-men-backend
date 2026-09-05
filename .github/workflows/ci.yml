@@ -1,0 +1,32 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node-version: [20, 24]
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: ${{ matrix.node-version }}
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: CLI smoke test
+        run: |
+          node bin.js --version
+          node bin.js --help
+          node bin.js /tmp/smoke --docker --cloudinary
+          test -f /tmp/smoke/docker-compose.yml
+          test -f /tmp/smoke/src/common/config/cloudinary.js
+          test -f /tmp/smoke/src/modules/post/post.service.js
+          test -f /tmp/smoke/.env.example

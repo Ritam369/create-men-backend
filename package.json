@@ -1,0 +1,45 @@
+{
+  "name": "create-men-backend",
+  "version": "0.1.0",
+  "description": "Scaffold a MongoDB + Express + Node backend with a standardized module-sliced structure (Atlas/Docker + Cloudinary/ImageKit options)",
+  "type": "module",
+  "license": "MIT",
+  "bin": {
+    "create-men-backend": "bin.js"
+  },
+  "files": [
+    "bin.js",
+    "lib",
+    "template",
+    "template-docker",
+    "template-media"
+  ],
+  "engines": {
+    "node": ">=20"
+  },
+  "keywords": [
+    "create",
+    "scaffold",
+    "mern",
+    "men",
+    "express",
+    "mongodb",
+    "mongoose",
+    "backend",
+    "boilerplate"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Ritam369/create-men-backend.git"
+  },
+  "bugs": {
+    "url": "https://github.com/Ritam369/create-men-backend/issues"
+  },
+  "homepage": "https://github.com/Ritam369/create-men-backend#readme",
+  "publishConfig": {
+    "access": "public"
+  },
+  "dependencies": {
+    "@clack/prompts": "^1.7.0"
+  }
+}
