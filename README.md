@@ -116,6 +116,8 @@ tag publishes that exact commit to npm, after a workflow check that the tag matc
 
 1. npmjs.com → profile → **Access Tokens** → generate an **Automation** token
 2. GitHub repo → Settings → Secrets and variables → Actions → new secret **`NPM_TOKEN`**
+3. Verify anytime: Actions tab → **Verify NPM_TOKEN** → **Run workflow** — it must
+   authenticate and print your npm username
 
 **Every release:**
 

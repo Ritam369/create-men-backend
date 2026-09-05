@@ -1,0 +1,26 @@
+name: Verify NPM_TOKEN
+
+# Sanity-checks that the NPM_TOKEN secret exists and authenticates to the npm
+# registry — without publishing anything. Runs once when this file lands on
+# main, and any time from the Actions tab ("Run workflow") — useful after
+# rotating the token.
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths: [.github/workflows/verify-npm-token.yml]
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Authenticate to registry.npmjs.org
+        run: |
+          output=$(npm whoami 2>&1) || {
+            echo "$output"
+            echo "::error::NPM_TOKEN is missing or invalid — check the secret value in repo settings and the token itself on npmjs.com"
+            exit 1
+          }
+          echo "Authenticated as: $output ✔"
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
