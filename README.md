@@ -106,20 +106,7 @@ Layout:
 - `template-docker/` — docker-compose.yml (Docker choice only)
 - `template-media/` — cloudinary.js / imagekit.js (media choice only)
 
-## Releasing
-
-Publishing is manual — update GitHub and npm together, same code, same version:
-
-```bash
-npm version patch        # or minor / major — bumps package.json, commits, tags vX.Y.Z
-git push --follow-tags   # commits + tag to GitHub
-npm publish              # the same code to npm
-```
-
-`bin.js` reads `--version` straight from `package.json`, so the CLI always reports the
-published package's version — there is only one place to bump.
-
-To test the exact published artifact before releasing:
+To test the exact artifact npm would publish:
 
 ```bash
 npm pack
