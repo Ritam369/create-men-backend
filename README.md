@@ -106,35 +106,18 @@ Layout:
 - `template-docker/` — docker-compose.yml (Docker choice only)
 - `template-media/` — cloudinary.js / imagekit.js (media choice only)
 
-## Releases — GitHub ↔ npm in sync
+## Releasing
 
-npm publishing is driven entirely by **GitHub Releases**: every release from a `vX.Y.Z`
-tag publishes that exact commit to npm, after a workflow check that the tag matches
-`package.json`'s version. GitHub and npm can never drift apart.
-
-**One-time setup** — add an npm token to the repo:
-
-1. npmjs.com → profile → **Access Tokens** → generate an **Automation** token
-2. GitHub repo → Settings → Secrets and variables → Actions → new secret **`NPM_TOKEN`**
-3. Verify anytime: Actions tab → **Verify NPM_TOKEN** → **Run workflow** — it must
-   authenticate and print your npm username
-
-**Every release:**
+Publishing is manual — update GitHub and npm together, same code, same version:
 
 ```bash
 npm version patch        # or minor / major — bumps package.json, commits, tags vX.Y.Z
-git push --follow-tags
+git push --follow-tags   # commits + tag to GitHub
+npm publish              # the same code to npm
 ```
 
-Then publish a **GitHub Release** from that tag — via web UI (Releases → Draft a new
-release → choose the existing tag) or:
-
-```bash
-gh release create v0.1.1 --generate-notes
-```
-
-The `Publish to npm` workflow runs CI checks, verifies `version == tag`, and pushes the
-package to the registry automatically.
+`bin.js` reads `--version` straight from `package.json`, so the CLI always reports the
+published package's version — there is only one place to bump.
 
 To test the exact published artifact before releasing:
 
