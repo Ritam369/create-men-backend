@@ -1,6 +1,6 @@
 {
   "name": "men-backend",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "description": "Scaffold a MongoDB + Express + Node backend with a standardized module-sliced structure (Atlas/Docker + Cloudinary/ImageKit options)",
   "type": "module",
   "license": "MIT",
