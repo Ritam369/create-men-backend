@@ -1,4 +1,4 @@
-# create-men-backend
+# men-backend
 
 Scaffolds a **backend-only** MongoDB + Express + Node (MEN) API with a standardized,
 module-sliced structure — the same conventions used across my projects: ESM, Express 5,
@@ -10,10 +10,14 @@ Generated projects run on both **Node (>= 20)** and **Bun**.
 ## Usage
 
 ```bash
-pnpm create men-backend [dir]        # via pnpm
-bunx create-men-backend [dir]        # via bun
-npx create-men-backend [dir]         # via npm
+npx men-backend [dir]              # via npm
+bunx men-backend [dir]             # via bun
+pnpm dlx men-backend [dir]         # via pnpm
 ```
+
+> Previously published as `create-men-backend` (deprecated). Heads-up for pnpm users:
+> `pnpm create men-backend` resolves to the old `create-men-backend` package —
+> use `pnpm dlx men-backend` instead.
 
 Runs interactively when options are omitted:
 
@@ -26,9 +30,9 @@ Runs interactively when options are omitted:
 Or fully non-interactive with flags (works in CI, scripts, non-TTY):
 
 ```bash
-pnpm create men-backend ./server --docker --cloudinary
-bunx create-men-backend my-api --atlas --imagekit
-npx create-men-backend ./backend --atlas --media none
+npx men-backend ./server --docker --cloudinary
+bunx men-backend my-api --atlas --imagekit
+pnpm dlx men-backend ./backend --atlas --media none
 ```
 
 | Flag | Description |
@@ -110,8 +114,8 @@ To test the exact artifact npm would publish:
 
 ```bash
 npm pack
-npm install -g ./create-men-backend-<version>.tgz
-create-men-backend /tmp/demo --docker --imagekit
+npm install -g ./men-backend-<version>.tgz
+men-backend /tmp/demo --docker --imagekit
 ```
 
 ## License

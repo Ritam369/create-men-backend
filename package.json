@@ -1,11 +1,11 @@
 {
-  "name": "create-men-backend",
+  "name": "men-backend",
   "version": "0.1.2",
   "description": "Scaffold a MongoDB + Express + Node backend with a standardized module-sliced structure (Atlas/Docker + Cloudinary/ImageKit options)",
   "type": "module",
   "license": "MIT",
   "bin": {
-    "create-men-backend": "bin.js"
+    "men-backend": "bin.js"
   },
   "files": [
     "bin.js",
@@ -30,12 +30,12 @@
   ],
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Ritam369/create-men-backend.git"
+    "url": "git+https://github.com/Ritam369/men-backend.git"
   },
   "bugs": {
-    "url": "https://github.com/Ritam369/create-men-backend/issues"
+    "url": "https://github.com/Ritam369/men-backend/issues"
   },
-  "homepage": "https://github.com/Ritam369/create-men-backend#readme",
+  "homepage": "https://github.com/Ritam369/men-backend#readme",
   "publishConfig": {
     "access": "public"
   },

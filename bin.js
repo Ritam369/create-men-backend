@@ -11,11 +11,12 @@ const VERSION = JSON.parse(
 const MEDIA_CHOICES = ["none", "cloudinary", "imagekit"];
 
 const HELP = `
-create-men-backend · scaffold a MongoDB + Express + Node backend
+men-backend · scaffold a MongoDB + Express + Node backend
 
 Usage
-  pnpm create men-backend [dir]
-  bunx create-men-backend [dir]      (same as: npx create-men-backend [dir])
+  npx men-backend [dir]
+  bunx men-backend [dir]
+  pnpm dlx men-backend [dir]
 
 Options
   [dir]             Target directory (default: ./backend, prompted when omitted)
@@ -28,9 +29,10 @@ Options
   -v, --version     show version
 
 Examples
-  pnpm create men-backend
-  pnpm create men-backend ./server --docker --cloudinary
-  bunx create-men-backend my-api --atlas --imagekit
+  npx men-backend
+  npx men-backend ./server --docker --cloudinary
+  bunx men-backend my-api --atlas --imagekit
+  pnpm dlx men-backend ./backend --docker
 `.trim();
 
 function parseArgs(argv) {
@@ -117,7 +119,7 @@ async function main() {
     console.error("Some choices are missing and interactive prompts need a terminal.");
     console.error(`Missing: ${missing.join(", ")}`);
     console.error("\nRun with all options instead, e.g.:");
-    console.error("  pnpm create men-backend ./backend --docker --cloudinary");
+    console.error("  npx men-backend ./backend --docker --cloudinary");
     process.exit(1);
   }
 
@@ -126,7 +128,7 @@ async function main() {
   let mediaChoice = args.media;
 
   if (interactive) {
-    p.intro(`create-men-backend ${VERSION}`);
+    p.intro(`men-backend ${VERSION}`);
 
     if (!targetDir) {
       const answer = await p.text({
