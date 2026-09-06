@@ -175,7 +175,7 @@ async function main() {
           {
             value: "cloudinary",
             label: "Cloudinary",
-            hint: "src/common/config/cloudinary.js",
+            hint: "src/common/config/cloudinary.js + multer",
           },
           {
             value: "imagekit",

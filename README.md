@@ -60,7 +60,7 @@ Per choice:
 | --- | --- |
 | **Atlas** | `MONGODB_URI=mongodb+srv://…` placeholder in `.env.example` |
 | **Docker** | `docker-compose.yml` (mongo:8.0 + named volume), `db:up`/`db:down` scripts, `MONGO_INITDB_ROOT_*` + local `MONGODB_URI` in `.env.example` |
-| **Cloudinary** | `src/common/config/cloudinary.js`, `cloudinary` dep, `CLOUDINARY_*` env keys |
+| **Cloudinary** | `src/common/config/cloudinary.js`, `cloudinary` + `multer` deps, `CLOUDINARY_*` env keys |
 | **ImageKit** | `src/common/config/imagekit.js`, `imagekit` + `multer` deps, `IMAGEKIT_*` env keys |
 
 The generated `README.md` documents the exact structure, env vars, response
@@ -98,6 +98,7 @@ conventions, and how to add new modules.
 
 ```bash
 npm install
+npm test                          # node --test suite (render + generate)
 node bin.js /tmp/demo --docker --cloudinary   # test generation locally
 ```
 
@@ -106,6 +107,7 @@ Layout:
 - `bin.js` — CLI: arg parsing, interactive prompts (@clack/prompts), orchestration
 - `lib/generate.js` — copies templates + renders decision-aware files
 - `lib/render.js` — generators for `package.json`, `.env.example`, `README.md`
+- `test/` — `node --test` suite covering render output and generated file trees
 - `template/` — base files (ships `.gitignore` as `_gitignore`; npm strips dotfiles)
 - `template-docker/` — docker-compose.yml (Docker choice only)
 - `template-media/` — cloudinary.js / imagekit.js (media choice only)

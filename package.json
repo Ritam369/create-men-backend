@@ -7,6 +7,9 @@
   "bin": {
     "men-backend": "bin.js"
   },
+  "scripts": {
+    "test": "node --test test/*.test.js"
+  },
   "files": [
     "bin.js",
     "lib",
